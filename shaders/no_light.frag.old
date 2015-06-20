@@ -1,0 +1,38 @@
+
+#version 420
+
+uniform struct Material {
+
+    vec4 diffuseColor;
+    vec4 specularColor;
+    float shininess;
+    sampler2D diffuseMap;
+
+} material;
+
+
+in vec2 fTexCoord;
+
+out vec4 finalColor;
+
+
+void main() {
+
+
+    vec4 map_diffuse = texture(material.diffuseMap, fTexCoord);
+    float md_alpha = map_diffuse.w;	        
+
+       
+    float dc_alpha = material.diffuseColor.w;
+
+    vec4 tempColor = material.diffuseColor * (1 - md_alpha) + md_alpha * map_diffuse;
+    tempColor.w = md_alpha*dc_alpha;
+
+
+    finalColor = tempColor;
+
+    //finalColor = material.diffuseColor;
+    //finalColor = vec4(0.5, 0.5, 1.0, 1.0);
+
+    
+}
