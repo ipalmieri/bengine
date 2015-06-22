@@ -17,7 +17,7 @@ namespace engine
 }
 
 
-#define SHADER_PATH "src/beng/shaders/"
+#define SHADER_PATH "modules/beng/shaders/"
 #define TEXTURE_PATH "data/beng/"
 
 #define DEF_VSHADER "default.vert"
