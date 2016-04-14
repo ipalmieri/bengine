@@ -1,34 +1,32 @@
+# Main Makefile.am
+
+#AM_CPPFLAGS= \
+#	     -I$(top_builddir)/modules/tools/include \
+#            -I$(top_builddir)/modules/beng/include 
+
+
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
 
 SUBDIRS = \
-	modules/beng \
-	modules/tools 
-
+	modules/tools \
+	modules/beng 
 
 
 bin_PROGRAMS = engine
 
+
 engine_SOURCES = src/main.cpp 
-
-
-AM_CPPFLAGS = \
-	-Imodules/beng/include \
-	-Imodules/tools/include 
-
-
-
-AM_CXXFLAGS = @AM_CXXFLAGS@ 
 
 
 engine_LDADD = \
 		modules/beng/libbeng.a \
 		modules/tools/libtools.a \
-		$(LIBOBJS)
-
-
-AM_LDFLAGS = -ljpeg -lglut -lGLEW -lrt 
-
+		$(RT_LIBS) \
+		$(JPEG_LIBS) \
+		$(GLUT_LIBS) \
+		$(GLEW_LIBS) \
+		$(GL_LIBS)
 
 
 #dist_noinst_SCRIPTS = autogen.sh

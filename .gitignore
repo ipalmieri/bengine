@@ -21,3 +21,7 @@ Makefile
 Makefile.in
 missing
 stamp-h1
+configure.scan
+autoscan.log
+ar-lib
+compile
