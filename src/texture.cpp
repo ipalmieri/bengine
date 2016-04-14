@@ -9,6 +9,7 @@ texture::texture(const imageMap &pmap)
    glGenTextures(1, &_object);
 
    glBindTexture(GL_TEXTURE_2D, _object);
+
    
    //fix this - maybe use mipmap
    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -23,16 +24,17 @@ texture::texture(const imageMap &pmap)
      0, texFormat(pmap), GL_UNSIGNED_BYTE, pmap.data());
    */
 
-
-   glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB, 
-		  pmap.width(), pmap.height());
    
+   glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 
+		  pmap.width(), pmap.height());
+
+
    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, pmap.width(), pmap.height(),
 		   texFormat(pmap), GL_UNSIGNED_BYTE, pmap.data());
 
-    
+
    glBindTexture(GL_TEXTURE_2D, 0);
-   
+
 }
 
 texture::~texture()
@@ -48,7 +50,7 @@ texture *texture::loadTextureFromFile(const string &filename)
    string filepath = TEXTURE_PATH + filename;
 
    readJPEG((char *) filepath.c_str(), pmap);
-
+   
    if (pmap.data())
    {
       pmap.flipVertical();
