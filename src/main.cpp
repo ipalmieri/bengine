@@ -236,7 +236,7 @@ void _main(int argc, char **argv)
    glutCreateWindow("bengine");
 
 
-   //glewExperimental = GL_TRUE; 
+   glewExperimental = GL_TRUE; 
    if (glewInit() != GLEW_OK)
       throw runtime_error("glewInit failed");
    glGetError();

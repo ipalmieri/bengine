@@ -1,4 +1,3 @@
-
 #version 420
 
 // coordinates in world space
