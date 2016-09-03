@@ -4,12 +4,11 @@
 #include <sstream>
 #include "edefs.h"
 
-namespace engine
-{
+namespace engine {
 
-   void bCheckError();
+void bCheckError();
 
-   std::string bPrintError(GLenum errorCode);
+std::string bPrintError(GLenum errorCode);
 
 }
 

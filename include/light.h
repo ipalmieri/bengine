@@ -5,34 +5,33 @@
 #include "program.h"
 #include "edefs.h"
 
-namespace engine
+namespace engine {
+class light
 {
-   class light
-   {
-      friend class renderer;
+  friend class renderer;
 
-     public:
-      
-      void apply(program *prog);
-      void remove();
-  
-      Real kc; //constant attenuation
-      Real kl; //linear
-      Real kq; //quadratic
-  
-      tools::Vector4 position;
-      tools::Vector4 color;
-      
-      Real ambientCoef;
+ public:
+
+  void apply(program* prog);
+  void remove();
+
+  Real kc; //constant attenuation
+  Real kl; //linear
+  Real kq; //quadratic
+
+  tools::vector4 position;
+  tools::vector4 color;
+
+  Real ambientCoef;
 
 
-     protected:
+ protected:
 
-      light(const tools::Vector4 &pos); //w = 0 -> directional light source
-      ~light();
+  light(const tools::vector4& pos); //w = 0 -> directional light source
+  ~light();
 
-       
-   };
+
+};
 }
 
 #endif

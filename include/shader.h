@@ -5,27 +5,29 @@
 #include <string>
 
 
-namespace engine
+namespace engine {
+class shader
 {
-   class shader
-   {
-      friend class renderer;
+  friend class renderer;
 
-     public:
-      
-      inline GLuint object() const { return _object; }
+ public:
 
-     protected:
+  inline GLuint object() const
+  {
+    return _object;
+  }
 
-      shader(const std::string &code, const GLenum &type);
-      ~shader();
+ protected:
 
-      static shader *shaderFromFile(const std::string &filename, const GLenum &type);
+  shader(const std::string& code, const GLenum& type);
+  ~shader();
 
-      GLuint _object;
+  static shader* shaderFromFile(const std::string& filename, const GLenum& type);
+
+  GLuint _object;
 
 
-   };
+};
 }
 
 #endif

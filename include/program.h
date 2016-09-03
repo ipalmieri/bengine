@@ -31,48 +31,51 @@
 #define AMB_LIGHT_UNIF "light.ambientCoef"
 
 #define GAMMA_UNIF "gamma"
+#define TEXCTRL_UNIF "texctrl" // 1.0 if has texture, 0.0 otherwise
 //---
 
-namespace engine
+namespace engine {
+class shader;
+
+class program
 {
-   class shader;
 
-   class program
-   {
-      
-      friend class renderer;
+  friend class renderer;
 
-     public:
-      
-      inline GLuint object() const { return _object; }
-      void apply() const;
-      bool isApplied() const;
-      void remove() const;
-      
-      GLint attrib(const GLchar* name) const;
-      GLint uniform(const GLchar* name) const;
+ public:
 
+  inline GLuint object() const
+  {
+    return _object;
+  }
+  void apply() const;
+  bool isApplied() const;
+  void remove() const;
 
-      void setUniform(const GLchar *name, const int &value);
-      void setUniform(const GLchar *name, const Real &value);
-      void setUniform(const GLchar *name, const tools::Vector3 &v);
-      void setUniform(const GLchar *name, const tools::Vector4 &v);
-      void setUniform(const GLchar *name, const tools::transMatrix  &m, 
-		      GLboolean transpose = GL_TRUE);
+  GLint attrib(const GLchar* name) const;
+  GLint uniform(const GLchar* name) const;
 
 
-     protected:
+  void setUniform(const GLchar* name, const int& value);
+  void setUniform(const GLchar* name, const Real& value);
+  void setUniform(const GLchar* name, const tools::vector3& v);
+  void setUniform(const GLchar* name, const tools::vector4& v);
+  void setUniform(const GLchar* name, const tools::transMatrix&  m,
+                  GLboolean transpose = GL_TRUE);
 
-      program(const std::vector<shader *> &shaders);
-      ~program();
-    
-      GLuint _object;
-        
-      //copying disabled
-      program(const program&);
-      const program& operator=(const program&);  
 
-   };
+ protected:
+
+  program(const std::vector<shader*>& shaders);
+  ~program();
+
+  GLuint _object;
+
+  //copying disabled
+  program(const program&);
+  const program& operator=(const program&);
+
+};
 }
 
 #endif
