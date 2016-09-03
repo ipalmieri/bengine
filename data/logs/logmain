@@ -1,0 +1,12 @@
+01:43:49.593919 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES
+01:43:49.594518 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES
+01:44:00.187336 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES
+01:44:00.187987 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES
+01:44:09.368322 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES
+01:44:09.369231 03/09/2016 [beng] ERROR: Compile failure in shader:
+0:2(10): error: GLSL 4.10 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.00 ES, and 3.00 ES

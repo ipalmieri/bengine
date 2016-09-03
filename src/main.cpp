@@ -28,11 +28,11 @@ void init()
 {
   rend = rendererSingleton::getInstance();
 
-  light* l1 = rend->createLight(Vector4(10.0f, 10.0f, 5.0f, 1.0f));
-  light* l2 = rend->createLight(Vector4(-10.0f, -10.0f, 5.0f, 1.0f));
-  light* l3 = rend->createLight(Vector4(-10.0f, 10.0f, 5.0f, 1.0f));
-  light* l4 = rend->createLight(Vector4(10.0f, -10.0f, 5.0f, 1.0f));
-  light* l5 = rend->createLight(Vector4(0.0f, 0.0f, 20.0f, 1.0f));
+  light* l1 = rend->createLight(vector4(10.0f, 10.0f, 5.0f, 1.0f));
+  light* l2 = rend->createLight(vector4(-10.0f, -10.0f, 5.0f, 1.0f));
+  light* l3 = rend->createLight(vector4(-10.0f, 10.0f, 5.0f, 1.0f));
+  light* l4 = rend->createLight(vector4(10.0f, -10.0f, 5.0f, 1.0f));
+  light* l5 = rend->createLight(vector4(0.0f, 0.0f, 20.0f, 1.0f));
 
   l1->kq = l2->kq = l3->kq = l4->kq = l5->kq = 0.013;
 
@@ -53,16 +53,16 @@ void init()
   material* mbol = rend->createMaterial();
 
 
-  mwhite->diffuseColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-  mred->diffuseColor = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-  mblue->diffuseColor = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-  mgreen->diffuseColor = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-  mtex->diffuseColor = Vector4(0.0f, 1.0f, 1.0f, 1.0f);
+  mwhite->diffuseColor = vector4(1.0f, 1.0f, 1.0f, 1.0f);
+  mred->diffuseColor = vector4(1.0f, 0.0f, 0.0f, 1.0f);
+  mblue->diffuseColor = vector4(0.0f, 0.0f, 1.0f, 1.0f);
+  mgreen->diffuseColor = vector4(0.0f, 1.0f, 0.0f, 1.0f);
+  mtex->diffuseColor = vector4(0.0f, 1.0f, 1.0f, 1.0f);
   mtex->diffuseMap = rend->createTexture("memory-1948.jpg");
-  mtex->specularColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-  mplan->diffuseColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-  mbol->diffuseColor = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-  mbol->specularColor = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+  mtex->specularColor = vector4(1.0f, 1.0f, 1.0f, 1.0f);
+  mplan->diffuseColor = vector4(1.0f, 1.0f, 1.0f, 1.0f);
+  mbol->diffuseColor = vector4(0.0f, 0.0f, 1.0f, 1.0f);
+  mbol->specularColor = vector4(1.0f, 1.0f, 1.0f, 1.0f);
   mbol->diffuseMap = rend->createTexture("venus-1.jpg");
 
   mesh* meshe = rend->createMesh();
@@ -83,13 +83,13 @@ void init()
   plan1 = new engnode(rend->rootNode());
   bol1 = new engnode(rend->rootNode());
 
-  red_cube->matrix.setPosition(Vector3(2.0f, 0.0f, 0.0f));
-  blue_cube->matrix.setPosition(Vector3(0.0f, 0.0f, 2.0f));
-  white_cube->matrix.setPosition(Vector3(0.0f, 0.0f, 0.0f));
-  green_cube->matrix.setPosition(Vector3(0.0f, 2.0f, 0.0f));
-  tex_cube->matrix.setPosition(Vector3(0.0f, 0.0f, 4.0f));
-  plan1->matrix.setPosition(Vector3(0.0f, 0.0f, -0.5f));
-  bol1->matrix.setPosition(Vector3(3.0f, 3.0f, 3.0f));
+  red_cube->matrix.setPosition(vector3(2.0f, 0.0f, 0.0f));
+  blue_cube->matrix.setPosition(vector3(0.0f, 0.0f, 2.0f));
+  white_cube->matrix.setPosition(vector3(0.0f, 0.0f, 0.0f));
+  green_cube->matrix.setPosition(vector3(0.0f, 2.0f, 0.0f));
+  tex_cube->matrix.setPosition(vector3(0.0f, 0.0f, 4.0f));
+  plan1->matrix.setPosition(vector3(0.0f, 0.0f, -0.5f));
+  bol1->matrix.setPosition(vector3(3.0f, 3.0f, 3.0f));
 
   red_cube->addEngset(meshe, mred, dprog);
   blue_cube->addEngset(meshe, mblue, dprog);
@@ -106,11 +106,11 @@ void init()
 
     float cor = (float) i / (float) 11;
 
-    mt->diffuseColor = Vector4(cor, cor, cor, 1.0f);
+    mt->diffuseColor = vector4(cor, cor, cor, 1.0f);
 
     gt[i] = new engnode(rend->rootNode());
 
-    gt[i]->matrix.setPosition(Vector3(-10, (float) i - 5, 10));
+    gt[i]->matrix.setPosition(vector3(-10, (float) i - 5, 10));
 
     gt[i]->addEngset(meshe, mt, dprog);
 
@@ -198,16 +198,16 @@ void display()
 
 
   // scene animation
-  tex_cube->matrix = tex_cube->matrix * transMatrix::rotationMatrix(Vector3(0, 0,
+  tex_cube->matrix = tex_cube->matrix * transMatrix::rotationMatrix(vector3(0, 0,
                      1), dt);
 
   static float w = 0;
   float r = 10.0f;
   w = w + dt;
 
-  bol1->matrix.setPosition(Vector3(r*cos(w), r*sin(w), 3));
+  bol1->matrix.setPosition(vector3(r*cos(w), r*sin(w), 3));
 
-  bol1->matrix = bol1->matrix * transMatrix::rotationMatrix(Vector3(0, 0, 1),
+  bol1->matrix = bol1->matrix * transMatrix::rotationMatrix(vector3(0, 0, 1),
                  dt*3);
 
   //---
