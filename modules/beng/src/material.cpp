@@ -8,13 +8,13 @@ using namespace tools;
 
 material::material()
 {
-   diffuseColor = DEF_COLOR;
-   specularColor = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+  diffuseColor = DEF_COLOR;
+  specularColor = vector4(0.0f, 0.0f, 0.0f, 1.0f);
 
-   shininess = 10.0f;
-   
-   diffuseMap = (texture *) NULL;
-   
+  shininess = 10.0f;
+
+  diffuseMap = (texture*) NULL;
+
 }
 
 material::~material()
@@ -23,23 +23,25 @@ material::~material()
 }
 
 
-void material::apply(program *prog)
+void material::apply(program* prog)
 {
 
-   prog->setUniform(DIFF_MATERIAL_UNIF, diffuseColor);
-   
-   prog->setUniform(SPEC_MATERIAL_UNIF, specularColor);
-   
-   prog->setUniform(SHIN_MATERIAL_UNIF, shininess);
+  prog->setUniform(DIFF_MATERIAL_UNIF, diffuseColor);
 
-   //diffuseMap
-   if (diffuseMap)
-   {
-      glActiveTexture(GL_TEXTURE0);
-      glBindTexture(GL_TEXTURE_2D, diffuseMap->object());
-      prog->setUniform(DIFF_MAP_UNIF, 0);
-   }
+  prog->setUniform(SPEC_MATERIAL_UNIF, specularColor);
 
+  prog->setUniform(SHIN_MATERIAL_UNIF, shininess);
+
+  //diffuseMap
+  if (diffuseMap) {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, diffuseMap->object());
+
+    prog->setUniform(DIFF_MAP_UNIF, 0);
+    prog->setUniform(TEXCTRL_UNIF, 1.0f);
+  } else {
+    prog->setUniform(TEXCTRL_UNIF, 0.0f);
+  }
 
 
 }
@@ -47,11 +49,10 @@ void material::apply(program *prog)
 
 void material::remove()
 {
-   //diffuseMap
-   if (diffuseMap)
-   {
-      glActiveTexture(GL_TEXTURE0);
-      glBindTexture(GL_TEXTURE_2D, 0);
-   }
+  //diffuseMap
+  if (diffuseMap) {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+  }
 
 }

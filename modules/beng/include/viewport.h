@@ -3,30 +3,31 @@
 
 #include "edefs.h"
 
-namespace engine
+namespace engine {
+class viewport
 {
-   class viewport
-   {
-     public:
-      viewport(const int &x, const int &y, const unsigned &width, const unsigned &height);
-      ~viewport();
+ public:
+  viewport(const int& x, const int& y, const unsigned& width,
+           const unsigned& height);
+  ~viewport();
 
-      void reset(const int &x, const int &y, const unsigned &width, const unsigned &height);
+  void reset(const int& x, const int& y, const unsigned& width,
+             const unsigned& height);
 
-      void apply();
+  void apply();
 
-     protected:
+ protected:
 
-      //position of the lower left corner
-      int _x;
-      int _y;
-
-
-      unsigned _width;
-      unsigned _height;
+  //position of the lower left corner
+  int _x;
+  int _y;
 
 
-   };
+  unsigned _width;
+  unsigned _height;
+
+
+};
 }
 
 #endif

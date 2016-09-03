@@ -28,7 +28,7 @@ uniform struct Light {
 } light;
 
 uniform vec3 gamma;
-
+uniform float texctrl; 
 
 in vec4 fVertex;
 in vec3 fNormal;
@@ -63,14 +63,13 @@ void main() {
   
   vec4 texDiffuse = texture(material.diffuseMap, fTexCoord);
 
-  float mdAlpha = texDiffuse.a;	        
-       
+  float mdAlpha = texDiffuse.a * texctrl;	        
+
   float dcAlpha = material.diffuseColor.a;
 
   vec4 albedoColor = (1.0 - mdAlpha) * material.diffuseColor + mdAlpha * texDiffuse;
 
   albedoColor.a = 1.0 - (1.0 - mdAlpha)*(1.0 - dcAlpha);
-
 
 
   // Ambient Color 
@@ -126,5 +125,7 @@ void main() {
   //finalColor = vec4(fNormal, 1.0);
   //finalColor = material.diffuseColor;
   //finalColor = vec4(0.5, 0.5, 1.0, 1.0);
-  
+
+  //finalColor = material.diffuseColor;
+
 }

@@ -7,9 +7,9 @@ using namespace engine;
 using namespace tools;
 using namespace std;
 
-engnode::engnode(engnode *parent) : tnode(parent)
+engnode::engnode(engnode* parent) : tnode(parent)
 {
-   matrix = transMatrix(Matrix4::IDENTITY);
+  matrix = transMatrix(matrix4::IDENTITY);
 }
 
 engnode::~engnode()
@@ -17,26 +17,24 @@ engnode::~engnode()
 
 }
 
-void engnode::draw(material *mat, program *prog)
+void engnode::draw(material* mat, program* prog)
 {
 
-   for (vector<engset>::iterator it = engsets.begin(); it != engsets.end(); ++it)
-   {
-      if (it->mater == mat && it->prog == prog)
-      {
-	 (it->meshe)->draw();
-      }
-   }
+  for (vector<engset>::iterator it = engsets.begin(); it != engsets.end(); ++it) {
+    if (it->mater == mat && it->prog == prog) {
+      (it->meshe)->draw();
+    }
+  }
 
 }
 
-void engnode::addEngset(mesh *me, material *mat, program *prog)
+void engnode::addEngset(mesh* me, material* mat, program* prog)
 {
-   engset eset;
+  engset eset;
 
-   eset.meshe = me;
-   eset.mater = mat;
-   eset.prog = prog;
+  eset.meshe = me;
+  eset.mater = mat;
+  eset.prog = prog;
 
-   engsets.push_back(eset);
+  engsets.push_back(eset);
 }

@@ -10,10 +10,9 @@
 #include "tools.h"
 
 
-namespace engine
-{
-   typedef float Real;
-   typedef float Radian;
+namespace engine {
+typedef float Real;
+typedef float Radian;
 }
 
 
@@ -29,7 +28,7 @@ namespace engine
 #define DEF_NEAR 1
 #define DEF_FAR 100
 
-#define DEF_COLOR tools::Vector4(0.5f, 0.5f, 0.5f, 1.0f)
-#define DEF_GAMMA tools::Vector3(1.0f, 1.0f, 1.0f)
+#define DEF_COLOR tools::vector4(0.5f, 0.5f, 0.5f, 1.0f)
+#define DEF_GAMMA tools::vector3(1.0f, 1.0f, 1.0f)
 
 #endif

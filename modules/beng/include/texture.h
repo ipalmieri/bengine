@@ -3,38 +3,43 @@
 
 #include "edefs.h"
 
-namespace engine
+namespace engine {
+class texture
 {
-   class texture
-   {
-      friend class renderer;
+  friend class renderer;
 
-     public:
-      
-      inline GLuint object() { return _object; }
-  
-     protected:
-      
-      texture(const tools::imageMap &pmap);
-      ~texture();
-    
-      GLuint _object;
+ public:
 
-      static GLenum texFormat(const tools::imageMap &pmap)
-      {
-	 //fix this - use enum not integers
-	 switch (pmap.channels()) {
-	    case 1: return GL_LUMINANCE;
-	    case 3: return GL_RGB;
-	    default: throw std::runtime_error("Invalid imageMap to texture format");
-	 }
-      }
+  inline GLuint object()
+  {
+    return _object;
+  }
 
-      static texture *loadTextureFromFile(const std::string &filename);
+ protected:
 
-   };
+  texture(const tools::imageMap& pmap);
+  ~texture();
 
-   
+  GLuint _object;
+
+  static GLenum texFormat(const tools::imageMap& pmap)
+  {
+    //fix this - use enum not integers
+    switch (pmap.channels()) {
+      case 1:
+        return GL_LUMINANCE;
+      case 3:
+        return GL_RGB;
+      default:
+        throw std::runtime_error("Invalid imageMap to texture format");
+    }
+  }
+
+  static texture* loadTextureFromFile(const std::string& filename);
+
+};
+
+
 
 }
 

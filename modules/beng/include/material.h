@@ -4,33 +4,32 @@
 #include "algebra.h"
 #include "edefs.h"
 
-namespace engine
+namespace engine {
+class program;
+class texture;
+
+class material
 {
-   class program;
-   class texture;
+  friend class renderer;
 
-   class material
-   {
-      friend class renderer;
-   
-     public:
+ public:
 
-      void apply(program *prog);
-      void remove();
+  void apply(program* prog);
+  void remove();
 
-      tools::Vector4 diffuseColor;
-      tools::Vector4 specularColor;
+  tools::vector4 diffuseColor;
+  tools::vector4 specularColor;
 
-      Real shininess;
+  Real shininess;
 
-      texture *diffuseMap;
+  texture* diffuseMap;
 
-     protected:
+ protected:
 
-      material();
-      ~material();
+  material();
+  ~material();
 
-   };
+};
 }
 
 #endif
